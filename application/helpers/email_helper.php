@@ -14,7 +14,7 @@ function kirim_email($email, $subject, $message)
     $config['mailtype'] = "html";
     $config['newline'] = "\r\n";
     $ci->email->initialize($config);
-    $ci->email->from('demo-ecommerce@zamanet.com', "Zamanet Store");
+    $ci->email->from('demo-ecommerce@zamanet.com', "Ourtly Food");
     $ci->email->to("$email");
     $ci->email->subject("$subject");
     $ci->email->message("$message");

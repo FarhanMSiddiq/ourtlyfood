@@ -164,7 +164,7 @@ class Admin extends CI_Controller
 			$this->load->library('upload', $config);
 			$this->upload->do_upload('g');
 			$hasil = $this->upload->data();
-			if ($hasil['file_name'] == '') {
+			if($hasil['file_name'] == '') {
 				$data = array(
 					'id_mitra' => $this->input->post('mitra'),
 					'id_kategori_produk' => $this->input->post('a'),
@@ -203,6 +203,7 @@ class Admin extends CI_Controller
 			$where = array('id_produk' => $this->input->post('id'));
 			$this->model_app->update('tb_toko_produk', $data, $where);
 			redirect('admin/produk');
+			
 		} else {
 
 			$data['title'] = 'Edit - Zamanet Store';

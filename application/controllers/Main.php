@@ -47,7 +47,6 @@ class Main extends CI_Controller
 			$data['artikel'] = $this->model_artikel->semua_artikel(0, 15);
 			$this->pagination->initialize($config);
 			$this->template->load('home/template', 'home/view_home', $data);
-			//$this->load->view('home/template');
 		} else {
 			redirect('main');
 		}

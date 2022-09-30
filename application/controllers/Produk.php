@@ -402,7 +402,7 @@ class Produk extends CI_Controller
 					  </table><br><br>
 
 				      Jika sudah melakukan transfer, jangan lupa konfirmasi transferan anda <a href='" . base_url() . "konfirmasi'>disini</a><br>
-				      Salam. Admin Zamanet Store</body></html> \n";
+				      Salam. Admin Ourtly Food</body></html> \n";
 
 				$namawebsite = $iden['nama_website'];
 				kirim_email($email_tujuan, $subject, $message);
