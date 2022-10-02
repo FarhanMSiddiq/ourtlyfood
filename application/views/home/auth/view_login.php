@@ -34,7 +34,7 @@
                             <?= form_error('user_email', '<small style="color:red;">', '</small>'); ?>
                             </li>
                             <li class="single-form-item">
-                                <label for="name" class="visually-hidden">Name</label>
+                                <label for="name" class="visually-hidden">Email</label>
                                 <input type="text" name="user_email" class="form-control" value="<?= set_value('user_email'); ?>" placeholder="Masukkan Email">
                                 <span class="icon"><i class="icon icon-carce-user"></i></span>
                             </li>
