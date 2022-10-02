@@ -16,7 +16,7 @@ class Cari extends CI_Controller
         $jumlah = $this->model_app->view('tb_toko_produk')->num_rows();
         $config['base_url'] = base_url() . 'cari';
         $config['total_rows'] = $jumlah;
-        $config['per_page'] = 3;
+        $config['per_page'] = 20;
         if ($this->uri->segment('3') == '') {
             $dari = 0;
         } else {

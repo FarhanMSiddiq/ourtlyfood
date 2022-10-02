@@ -1,6 +1,6 @@
 <?php include '_include/head.php'; ?>
 
-<body>
+<body <?php if($this->uri->segment(1)=='login'){ echo 'style="background-color:#FFFFFF;"';}?>>
 
     <?= $konten;?>
 

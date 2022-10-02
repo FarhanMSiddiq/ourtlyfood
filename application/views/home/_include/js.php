@@ -4,7 +4,6 @@
   <!-- ::::::::::::::All JS Files here :::::::::::::: -->
   <!-- Global Vendor -->
   <script src="<?= base_url('assets/template_mobile/') ?>js/vendor/modernizr-3.11.2.min.js"></script>
-  <script src="<?= base_url('assets/template_mobile/') ?>js/vendor/jquery-3.6.0.min.js"></script>
   <script src="<?= base_url('assets/template_mobile/') ?>js/vendor/jquery-migrate-3.3.2.min.js"></script>
 
   <!--Plugins JS-->
@@ -18,6 +17,36 @@
   <!--Main JS (Common Activation Codes)-->
   <script src="<?= base_url('assets/template_mobile/') ?>js/main.js"></script>
   <!-- <script src="assets/js/main.min.js"></script> -->
+
+  <script src="<?= base_url('assets/template/js/'); ?>sweetalert2.min.js"></script>
+  <script>
+    function logout() {
+      let timerInterval;
+      Swal.fire({
+        title: 'Konfirmasi Keluar',
+        text: "Apakah Anda ingin keluar dari Akun ini?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Ya, Keluar',
+        cancelButtonText: 'Batal',
+      }).then((result) => {
+        if (result.value) {
+          Swal.fire({
+              title: 'Berhasil!',
+              text: 'Logout berhasil',
+              icon: 'success',
+              showConfirmButton: false,
+              timer: 1500,
+            })
+            .then(() => {
+              window.location.href = site_url + '/auth/logout'
+            })
+        }
+      })
+    }
+  </script>
 
   <script>
       function filterFunction(that, event) {

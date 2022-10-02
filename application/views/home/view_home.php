@@ -12,13 +12,13 @@
                     <li class="list-item">
                         <ul class="list-child">
                             <li class="list-item">
-                                <a href="cart.html" area-label="Cart" class="btn btn--size-33-33 btn--center btn--round btn--color-radical-red btn--bg-white btn--box-shadow"><i
+                                <a href="<?=base_url('keranjang');?>" area-label="Cart" class="btn btn--size-33-33 btn--center btn--round btn--color-radical-red btn--bg-white btn--box-shadow"><i
                                 class="icon icon-carce-cart"></i></a>
                             </li>
                         </ul>
                     </li>
                 </ul>
-            </div>
+            </div>  
         </div>
         <!-- End User Event Area -->
     </div>
@@ -72,7 +72,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="shop-filter-block mt-0">
-                                    <h4 class="shop-filter-block__title">Price</h4>
+                                    <h4 class="shop-filter-block__title">Harga (Rupiah)</h4>
                                     <div class="shop-filter-block__content">
                                         <div class="widget-price-range">
                                             <input type="text" id="price-range-slider">
@@ -80,90 +80,16 @@
                                     </div>
                                 </div>
                                 <ul class="product-variable-lists">
-                                    <li class="list-item">
-                                        <div class="left">Size</div>
-                                        <div class="right">
-                                            <ul class="size-chart inner-child-item">
-                                                <li>
-                                                    <label for="samll">
-                                                        <input type="radio" name="size" id="samll" checked="">
-                                                        <span class="size-text">S</span>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <label for="medium">
-                                                        <input type="radio" name="size" id="medium">
-                                                        <span class="size-text">M</span>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <label for="large">
-                                                        <input type="radio" name="size" id="large">
-                                                        <span class="size-text">L</span>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <label for="xlarge">
-                                                        <input type="radio" name="size" id="xlarge">
-                                                        <span class="size-text">XL</span>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <label for="xxlarge">
-                                                        <input type="radio" name="size" id="xxlarge">
-                                                        <span class="size-text">XXL</span>
-                                                    </label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="list-item">
-                                        <div class="left">Color</div>
-                                        <div class="right">
-                                            <ul class="color-chart inner-child-item">
-                                                <li>
-                                                    <label for="blue">
-                                                        <input type="radio" name="color" id="blue">
-                                                        <span class="color-box color-box--blue"></span>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <label for="orange">
-                                                        <input type="radio" name="color" id="orange" checked="">
-                                                        <span class="color-box color-box--orange"></span>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <label for="violet">
-                                                        <input type="radio" name="color" id="violet">
-                                                        <span class="color-box color-box--violet"></span>
-                                                    </label>
-                                                </li>
-                                                <li>
-                                                    <label for="pink">
-                                                        <input type="radio" name="color" id="pink">
-                                                        <span class="color-box color-box--pink"></span>
-                                                    </label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-
-                                </ul>
                                 <div class="shop-filter-block">
-                                    <h4 class="shop-filter-block__title">Brand</h4>
+                                    <h4 class="shop-filter-block__title">Kategori</h4>
                                     <div class="shop-filter-block__content">
-                                        <ul class="shop-filter-block__brand">
-                                            <li><button>HasThemes</button></li>
-                                            <li><button class="active">HasTech</button></li>
-                                            <li><button>Bootxperts</button></li>
-                                            <li><button>Codecarnival</button></li>
-                                        </ul>
+                                        <label><input type="checkbox" name="checkbox" value="value">&nbsp;&nbsp;Menu Sarapan</label><br>
+                                        <label><input type="checkbox" name="checkbox" value="value">&nbsp;&nbsp;Menu Makan Siang</label><br>
+                                        <label><input type="checkbox" name="checkbox" value="value">&nbsp;&nbsp;Menu Makan Malam</label><br>
                                     </div>
                                 </div>
                                 <div class="shop-filter-block">
-                                    <button class="apply-btn">APPLY</button>
-                                    <button class="cancel-btn">CANCEL</button>
+                                    <button class="apply-btn">Apply Filter</button>
                                 </div>
                             </div>
                         </div>
@@ -233,16 +159,32 @@
                                 <span class="brand">Nama Mitra</span>
                                 <span class="price"><?= "Rp " . number_format($row['harga_konsumen'],0,',','.'); ?></span>
                             </div>
-                            <div class="right">
-                                <p><span class="icon"><i class="icon icon-carce-check-circle"></i></span> Completed</p>
-                            </div>
                         </div>
                         <ul class="review-star">
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
-                                        <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
+                                                            <?php
+                                                            $idpro = $row['id_produk'];
+                                                            $query = $this->db->query("SELECT * FROM tb_ulasan WHERE id_produk='$idpro'");
+                                                            $bin  = $this->db->query("SELECT SUM(bintang) AS totalbintang FROM tb_ulasan WHERE id_produk='$idpro'")->row_array();
+                                                            $jml_rev = $query->num_rows();
+
+                                                            $jml_bintang = $bin['totalbintang'] / $jml_rev;
+
+                                                            if ($jml_rev == 0) {
+                                                                for ($y = 0; $y < 5; $y++) { ?>
+                                                                     <li class="items fill"><i class="icon icon-carce-star-full" style="color:gray;"></i></li>
+                                                                <?php }
+                                                            } else {
+                                                                for ($y = 0; $y <  $jml_bintang; $y++) { ?>
+                                                                    <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
+                                                                <?php }
+                                                                for ($y = 0; $y <  5 - $jml_bintang; $y++) { ?>
+                                                                     <li class="items fill"><i class="icon icon-carce-star-full" style="color:gray;"></i></li>
+                                                            <?php }
+                                                            } ?>
+                                                            <?php if ($jml_rev > 0) { ?>
+                                                                <li class="items fill">(<?= $jml_rev ?> Ulasan)</li>
+                                                            <?php } ?>
+                                       
                         </ul>
                     </div>
                 </li>
@@ -252,39 +194,15 @@
                         }
                         ?>
             </ul>
-            <button class="load-more-btn">load more</button>
+            <div align="center" style="margin-top:20px;">
+            <?php echo $this->pagination->create_links(); ?>
+            </div>
         </div>
     </div>
 </div>
 <!-- ...:::End Cart Section:::... -->
 
-<!-- ...:::Start User Event Section:::... -->
-<div class="user-event-section">
-    <!-- Start User Event Area -->
-    <div class="col pos-relative">
-
-        <div class="user-event-area">
-            <div class="user-event user-event--left">
-                <a area-label="event link icon" href="index.html" class="event-btn-link"><i
-                class="icon icon-carce-home"></i></a>
-                <a area-label="wishlist icon" href="wishlist.html" class="event-btn-link"><i
-                class="icon icon-carce-heart"></i></a>
-            </div>
-            <div class="user-event user-event--center">
-                <a area-label="cart icon" href="cart.html" class="event-btn-link"><i
-                class="icon icon-carce-cart"></i></a>
-            </div>
-            <div class="user-event user-event--right">
-                <a area-label="order icon" href="order.html" class="event-btn-link"><i
-                class="icon icon-carce-compare"></i></a>
-                <a area-label="chat icon" href="chat.html" class="event-btn-link"><i
-                class="icon icon-carce-bubbles2"></i></a>
-            </div>
-        </div>
-    </div>
-    <!-- End User Event Area -->
-</div>
-<!-- ...:::End User Event Section:::... -->
+<?php include '_include/navigation.php'; ?>
 
 <footer class="footer-section"></footer>
 </main>

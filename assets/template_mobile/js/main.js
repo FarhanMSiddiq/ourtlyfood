@@ -209,9 +209,9 @@ if ($('#price-range-slider').elExists()) {
       skin: "round",
       hide_min_max: true,
       min: 0,
-      max: 500,
-      from: 50,
-      to: 440,
+      max: 100000,
+      from: 0,
+      to: 50000,
     });;
 }
 

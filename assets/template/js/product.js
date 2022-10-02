@@ -6,19 +6,9 @@ function add2cart() {
     var total = parseInt(quantity) + parseInt(number_cart);
 
     if (quantity == '' || quantity == 0) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Jumlah Tidak Valid',
-            showConfirmButton: false,
-            timer: 2000,
-        })
+      alert("Jumlah Tidak Valid");
     } else if (total > parseInt(stock)) {
-        Swal.fire({
-            icon: 'error',
-            title: 'Stok Tidak Mencukupi',
-            showConfirmButton: false,
-            timer: 2000,
-        })
+        alert("Stok Tidak Mencukupi");
     } else {
         $.ajax({
             type: "POST",

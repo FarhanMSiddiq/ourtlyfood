@@ -10,7 +10,7 @@
 
             <div class="card-body">
            
-            <form action="<?= base_url('admin/edit_produk') ?>" method="post" enctype="multipart/form-data"
+            <form action="<?= base_url('admin/edit_produk') ?>" method="post" enctype="multipart/form-data">
 
                 <input type='hidden' name='id' value='<?= $rows['id_produk'] ?>'>
 

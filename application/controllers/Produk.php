@@ -16,21 +16,13 @@ class Produk extends CI_Controller
 		$jumlah = $this->model_app->view('tb_toko_produk')->num_rows();
 		$config['base_url'] = base_url() . 'produk/index';
 		$config['total_rows'] = $jumlah;
-		$config['per_page'] = 12;
+		$config['per_page'] = 20;
 		$config['full_tag_open'] = '<ul class="pagination">';
 		$config['full_tag_close'] = '</ul>';
 		$config['first_link'] = FALSE;
 		$config['last_link'] = FALSE;
-		$config['next_link'] = '&raquo;';
-		$config['next_tag_open'] = '<li class="page-item">';
-		$config['next_tag_close'] = '</li>';
-		$config['prev_link'] = '&laquo;';
-		$config['prev_tag_open'] = '<li class="page-item">';
-		$config['prev_tag_close'] = '</li>';
-		$config['cur_tag_open'] = '<li class="page-item active" aria-current="page"> <a class="page-link">';
-		$config['cur_tag_close'] = '</a><span class="sr-only">(current)</span></li>';
-		$config['num_tag_open'] = '<li class="page-item">';
-		$config['num_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li aria-current="page"> <a class="active">';
+		$config['cur_tag_close'] = '</a></li>';
 		$config['attributes'] = array('class' => 'page-link');
 
 

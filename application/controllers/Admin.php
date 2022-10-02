@@ -32,7 +32,7 @@ class Admin extends CI_Controller
 	{
 		if (!empty($this->session->userdata())) {
 
-			$data['title'] = 'Admin - Zamanet Store';
+			$data['title'] = 'Admin - Ourtly Food';
 			$data['grap'] = $this->model_main->grafik_kunjungan();
 
 			$this->template->load('admin/template', 'admin/view_dashboard', $data);
@@ -44,7 +44,7 @@ class Admin extends CI_Controller
 	function kategori_produk()
 	{
 
-		$data['title'] = 'Kategori Produk - Zamanet Store';
+		$data['title'] = 'Kategori Produk - Ourtly Food';
 		$data['record'] = $this->model_app->view_ordering('tb_toko_kategoriproduk', 'id_kategori_produk', 'DESC');
 
 		$this->template->load('admin/template', 'admin/kategori_produk/view_kategori_produk', $data);
@@ -59,7 +59,7 @@ class Admin extends CI_Controller
 			redirect('admin/kategori_produk');
 		} else {
 
-			$data['title'] = 'Tambah Kategori Produk - Zamanet Store';
+			$data['title'] = 'Tambah Kategori Produk - Ourtly Food';
 			$this->template->load('admin/template', 'admin/kategori_produk/view_kategori_produk_tambah', $data);
 		}
 	}
@@ -77,7 +77,7 @@ class Admin extends CI_Controller
 			$edit = $this->model_app->edit('tb_toko_kategoriproduk', array('id_kategori_produk' => $id))->row_array();
 			$data = array('rows' => $edit);
 
-			$data['title'] = 'Ubah Produk - Zamanet Store';
+			$data['title'] = 'Ubah Produk - Ourtly Food';
 			$this->template->load('admin/template', 'admin/kategori_produk/view_kategori_produk_edit', $data);
 		}
 	}
@@ -91,7 +91,7 @@ class Admin extends CI_Controller
 
 	function produk()
 	{
-		$data['title'] = 'Produk - Zamanet Store';
+		$data['title'] = 'Produk - Ourtly Food';
 		$data['record'] = $this->model_app->view_ordering('tb_toko_produk', 'nama_produk', 'ACS');
 		$this->template->load('admin/template', 'admin/produk/view_produk', $data);
 	}
@@ -145,7 +145,7 @@ class Admin extends CI_Controller
 			redirect('admin/produk');
 		} else {
 
-			$data['title'] = 'Tambah Produk - Zamanet Store';
+			$data['title'] = 'Tambah Produk - Ourtly Food';
 			$data['record'] = $this->model_app->view_ordering('tb_toko_kategoriproduk', 'id_kategori_produk', 'DESC');
 			$data['supp'] = $this->model_app->view_ordering('tb_toko_mitra', 'id_mitra', 'DESC');
 			$this->template->load('admin/template', 'admin/produk/view_produk_tambah', $data);
@@ -206,7 +206,7 @@ class Admin extends CI_Controller
 			
 		} else {
 
-			$data['title'] = 'Edit - Zamanet Store';
+			$data['title'] = 'Edit - Ourtly Food';
 			$data['supp'] = $this->model_app->view_ordering('tb_toko_mitra', 'id_mitra', 'DESC');
 			$data['record'] = $this->model_app->view_ordering('tb_toko_kategoriproduk', 'id_kategori_produk', 'DESC');
 			$data['rows'] = $this->model_app->edit('tb_toko_produk', array('id_produk' => $id))->row_array();
@@ -225,7 +225,7 @@ class Admin extends CI_Controller
 	function rekening()
 	{
 
-		$data['title'] = 'Rekening - Zamanet Store';
+		$data['title'] = 'Rekening - Ourtly Food';
 		$data['record'] = $this->model_rekening->rekening();
 		$this->template->load('admin/template', 'admin/rekening/view_rekening', $data);
 	}
@@ -239,7 +239,7 @@ class Admin extends CI_Controller
 			redirect('admin/rekening');
 		} else {
 
-			$data['title'] = 'Tambah Rekening - Zamanet Store';
+			$data['title'] = 'Tambah Rekening - Ourtly Food';
 			//$this->load->view('admin/rekening/view_rekening_tambah');
 			$this->template->load('admin/template', 'admin/rekening/view_rekening_tambah');
 		}
@@ -254,7 +254,7 @@ class Admin extends CI_Controller
 			redirect('admin/rekening');
 		} else {
 
-			$data['title'] = 'Edit Rekening - Zamanet Store';
+			$data['title'] = 'Edit Rekening - Ourtly Food';
 			$data['rows'] = $this->model_rekening->rekening_edit($id)->row_array();
 			$this->template->load('admin/template', 'admin/rekening/view_rekening_edit', $data);
 		}
@@ -285,7 +285,7 @@ class Admin extends CI_Controller
 	function mitra()
 	{
 
-		$data['title'] = 'mitra - Zamanet Store';
+		$data['title'] = 'mitra - Ourtly Food';
 		$pengguna = $this->session->id_pengguna;
 		$data['record'] = $this->model_app->view_ordering('tb_toko_mitra', 'id_mitra', 'DESC');
 		$this->template->load('admin/template', 'admin/mitra/view_mitra', $data);
@@ -310,7 +310,7 @@ class Admin extends CI_Controller
 			redirect('admin/mitra');
 		} else {
 
-			$data['title'] = 'Tambah mitra - Zamanet Store';
+			$data['title'] = 'Tambah mitra - Ourtly Food';
 			$this->template->load('admin/template', 'admin/mitra/view_mitra_tambah', $data);
 		}
 	}
@@ -335,7 +335,7 @@ class Admin extends CI_Controller
 			redirect('admin/mitra');
 		} else {
 
-			$data['title'] = 'Edit mitra - Zamanet Store';
+			$data['title'] = 'Edit mitra - Ourtly Food';
 			$proses = $this->model_app->edit('tb_toko_mitra', array('id_mitra' => $id))->row_array();
 			$data = array('rows' => $proses);
 			$this->template->load('admin/template', 'admin/mitra/view_mitra_edit', $data);
@@ -352,7 +352,7 @@ class Admin extends CI_Controller
 
 	function konsumen()
 	{
-		$data['title'] = 'Konsumen - Zamanet Store';
+		$data['title'] = 'Konsumen - Ourtly Food';
 		$data['record'] = $this->model_app->view_where_ordering('tb_pengguna', "level='2'", 'id_pengguna', 'ASC');
 		$this->template->load('admin/template', 'admin/konsumen/view_konsumen', $data);
 	}
@@ -366,7 +366,7 @@ class Admin extends CI_Controller
 			redirect('admin/konsumen');
 		} else {
 
-			$data['title'] = 'Ubah Konsumen - Zamanet Store';
+			$data['title'] = 'Ubah Konsumen - Ourtly Food';
 			$data['row'] = $this->model_app->profile_konsumen($id)->row_array();
 			$data['kota'] = $this->model_app->view('tb_kota');
 			$this->template->load('admin/template', 'admin/konsumen/view_konsumen_edit', $data);
@@ -380,7 +380,7 @@ class Admin extends CI_Controller
 		$record = $this->model_app->orders_report($id);
 		$edit = $this->model_app->profile_konsumen($id)->row_array();
 		$data = array('rows' => $edit, 'record' => $record);
-		$data['title'] = 'Detail Konsumen - Zamanet Store';
+		$data['title'] = 'Detail Konsumen - Ourtly Food';
 		$this->template->load('admin/template', 'admin/konsumen/view_konsumen_detail', $data);
 	}
 
@@ -451,7 +451,7 @@ class Admin extends CI_Controller
 		$data = array('rows' => $query);
 
 
-		$data['title'] = 'Masukan Resi - Zamanet Store';
+		$data['title'] = 'Masukan Resi - Ourtly Food';
 		$this->template->load('admin/template', 'admin/penjualan/view_resi', $data);
 	}
 
@@ -465,7 +465,7 @@ class Admin extends CI_Controller
 		$query = $this->model_app->edit('tb_toko_penjualan', array('id_penjualan' => $this->uri->segment(3)))->row_array();
 		$data = array('rows' => $query);
 
-		$data['title'] = 'Masukan Resi - Zamanet Store';
+		$data['title'] = 'Masukan Resi - Ourtly Food';
 		$this->template->load('admin/template', 'admin/penjualan/view_resi', $data);
 	}
 
@@ -517,7 +517,7 @@ class Admin extends CI_Controller
 		} else {
 			$data['record'] = $this->model_main->identitas()->row_array();
 
-			$data['title'] = 'Identitas Website - Zamanet Store';
+			$data['title'] = 'Identitas Website - Ourtly Food';
 			$this->template->load('admin/template', 'admin/website_identitas/view_identitas', $data);
 		}
 	}
@@ -525,7 +525,7 @@ class Admin extends CI_Controller
 	function menu()
 	{
 		$data['record'] = $this->model_menu->menu_website();
-		$data['title'] = 'Menu Website - Zamanet Store';
+		$data['title'] = 'Menu Website - Ourtly Food';
 		$this->template->load('admin/template', 'admin/website_menu/view_menu', $data);
 	}
 
@@ -535,7 +535,7 @@ class Admin extends CI_Controller
 			$this->model_menu->menu_website_tambah();
 			redirect('admin/menu');
 		} else {
-			$data['title'] = 'Tambah Menu Website - Zamanet Store';
+			$data['title'] = 'Tambah Menu Website - Ourtly Food';
 			$data['record'] = $this->model_menu->menu_utama();
 			$this->template->load('admin/template', 'admin/website_menu/view_menu_tambah', $data);
 		}
@@ -549,7 +549,7 @@ class Admin extends CI_Controller
 			redirect('admin/menu');
 		} else {
 
-			$data['title'] = 'Ubah Menu Website - Zamanet Store';
+			$data['title'] = 'Ubah Menu Website - Ourtly Food';
 			$data['record'] = $this->model_menu->menu_utama();
 			$data['rows'] = $this->model_menu->menu_edit($id)->row_array();
 			$this->template->load('admin/template', 'admin/website_menu/view_menu_edit', $data);
@@ -570,7 +570,7 @@ class Admin extends CI_Controller
 			redirect('admin/logo');
 		} else {
 
-			$data['title'] = 'Logo Website - Zamanet Store';
+			$data['title'] = 'Logo Website - Ourtly Food';
 			$data['record'] = $this->model_main->logo();
 			$this->template->load('admin/template', 'admin/website_logo/view_logowebsite', $data);
 		}
@@ -580,7 +580,7 @@ class Admin extends CI_Controller
 	function slider()
 	{
 		$data['record'] = $this->model_main->slide();
-		$data['title'] = 'Slider - Zamanet Store';
+		$data['title'] = 'Slider - Ourtly Food';
 		$this->template->load('admin/template', 'admin/website_slider/view_slider', $data);
 	}
 
@@ -592,7 +592,7 @@ class Admin extends CI_Controller
 		} else {
 			$data['record'] = $this->model_app->view('tb_toko_produk');
 
-			$data['title'] = 'Tambah Slider - Zamanet Store';
+			$data['title'] = 'Tambah Slider - Ourtly Food';
 			$this->template->load('admin/template', 'admin/website_slider/view_slider_tambah', $data);
 		}
 	}
@@ -605,7 +605,7 @@ class Admin extends CI_Controller
 			redirect('admin/slider');
 		} else {
 
-			$data['title'] = 'Edit Slider - Zamanet Store';
+			$data['title'] = 'Edit Slider - Ourtly Food';
 			$data['rows'] = $this->model_main->slide_edit($id)->row_array();
 			$data['record'] = $this->model_app->view('tb_toko_produk');
 			$this->template->load('admin/template', 'admin/website_slider/view_slider_edit', $data);
@@ -622,7 +622,7 @@ class Admin extends CI_Controller
 	{
 		$data['record'] = $this->model_halaman->halaman();
 
-		$data['title'] = 'Halaman - Zamanet Store';
+		$data['title'] = 'Halaman - Ourtly Food';
 		$this->template->load('admin/template', 'admin/website_halaman/view_halaman', $data);
 	}
 
@@ -633,7 +633,7 @@ class Admin extends CI_Controller
 			redirect('admin/halaman');
 		} else {
 
-			$data['title'] = 'Tambah Halaman Baru - Zamanet Store';
+			$data['title'] = 'Tambah Halaman Baru - Ourtly Food';
 			$this->template->load('admin/template', 'admin/website_halaman/view_halaman_tambah');
 		}
 	}
@@ -645,7 +645,7 @@ class Admin extends CI_Controller
 			$this->model_halaman->halaman_update();
 			redirect('admin/halaman');
 		} else {
-			$data['title'] = 'Ubah Halaman Baru - Zamanet Store';
+			$data['title'] = 'Ubah Halaman Baru - Ourtly Food';
 			$data['rows'] = $this->model_halaman->halaman_edit($id)->row_array();
 			$this->template->load('admin/template', 'admin/website_halaman/view_halaman_edit', $data);
 		}
@@ -660,7 +660,7 @@ class Admin extends CI_Controller
 	// Modul Blog
 	function artikel()
 	{
-		$data['title'] = 'Artikel - Zamanet Store';
+		$data['title'] = 'Artikel - Ourtly Food';
 		$data['record'] = $this->model_artikel->list_artikel();
 		$this->template->load('admin/template', 'admin/blog_artikel/view_artikel', $data);
 	}
@@ -672,7 +672,7 @@ class Admin extends CI_Controller
 			$this->model_artikel->list_artikel_tambah();
 			redirect('admin/artikel');
 		} else {
-			$data['title'] = 'Tambah Artikel - Zamanet Store';
+			$data['title'] = 'Tambah Artikel - Ourtly Food';
 			$data['tag'] = $this->model_artikel->tag_artikel();
 			$data['record'] = $this->model_artikel->kategori_artikel();
 			$this->template->load('admin/template', 'admin/blog_artikel/view_artikel_tambah', $data);
@@ -687,7 +687,7 @@ class Admin extends CI_Controller
 			$this->model_artikel->list_artikel_update();
 			redirect('admin/artikel');
 		} else {
-			$data['title'] = 'Edit Artikel - Zamanet Store';
+			$data['title'] = 'Edit Artikel - Ourtly Food';
 			$data['tag'] = $this->model_artikel->tag_artikel();
 			$data['record'] = $this->model_artikel->kategori_artikel();
 			$data['rows'] = $this->model_artikel->list_artikel_edit($id)->row_array();
@@ -740,7 +740,7 @@ class Admin extends CI_Controller
 
 	function tag_artikel()
 	{
-		$data['title'] = 'Tag - Zamanet Store';
+		$data['title'] = 'Tag - Ourtly Food';
 		$data['record'] = $this->model_artikel->tag_artikel();
 		$this->template->load('admin/template', 'admin/blog_tag/view_tag', $data);
 	}
@@ -752,7 +752,7 @@ class Admin extends CI_Controller
 			$this->model_artikel->tag_artikel_tambah();
 			redirect('admin/tag_artikel');
 		} else {
-			$data['title'] = 'Tambah Tag - Zamanet Store';
+			$data['title'] = 'Tambah Tag - Ourtly Food';
 			$this->template->load('admin/template', 'admin/blog_tag/view_tag_tambah', $data);
 		}
 	}
@@ -765,7 +765,7 @@ class Admin extends CI_Controller
 			$this->model_artikel->tag_artikel_update();
 			redirect('admin/tag_artikel');
 		} else {
-			$data['title'] = 'Edit Tag - Zamanet Store';
+			$data['title'] = 'Edit Tag - Ourtly Food';
 			$data['rows'] = $this->model_artikel->tag_artikel_edit($id)->row_array();
 			$this->template->load('admin/template', 'admin/blog_tag/view_tag_edit', $data);
 		}
@@ -832,7 +832,7 @@ class Admin extends CI_Controller
 
 			redirect('admin/edit_user/' . $this->input->post('id'));
 		} else {
-			$data['title'] = 'Edit Pengguna - Zamanet Store';
+			$data['title'] = 'Edit Pengguna - Ourtly Food';
 			$proses = $this->model_app->edit('tb_pengguna', array('username' => $id))->row_array();
 			$data = array('rows' => $proses);
 			$this->template->load('admin/template', 'admin/users/view_users_edit', $data);
@@ -848,7 +848,7 @@ class Admin extends CI_Controller
 
 	function users()
 	{
-		$data['title'] = 'Manajemen Pengguna - Zamanet Store';
+		$data['title'] = 'Manajemen Pengguna - Ourtly Food';
 		// $data['record'] = $this->model_app->view_ordering('tb_pengguna', 'username', 'DESC');
 		$data['record'] = $this->db->query("SELECT * FROM tb_pengguna ORDER BY level ASC,username ASC")->result_array();
 		$this->template->load('admin/template', 'admin/users/view_users', $data);
@@ -889,7 +889,7 @@ class Admin extends CI_Controller
 			$this->model_app->insert('tb_pengguna', $data);
 			redirect('admin/edit_user/' . $this->input->post('a'));
 		} else {
-			$data['title'] = 'Tambah Pengguna - Zamanet Store';
+			$data['title'] = 'Tambah Pengguna - Ourtly Food';
 			$this->template->load('admin/template', 'admin/users/view_users_tambah', $data);
 		}
 	}
@@ -897,35 +897,35 @@ class Admin extends CI_Controller
 	// Laporan
 	function laporan()
 	{
-		$data['title'] = 'Laporan Penjualan - Zamanet Store';
+		$data['title'] = 'Laporan Penjualan - Ourtly Food';
 		$data['record'] = $this->model_laporan->laporan();
 		$this->template->load('admin/template', 'admin/laporan/view_lap_penjualan', $data);
 	}
 
 	function laporan_hari()
 	{
-		$data['title'] = 'Laporan Penjualan - Zamanet Store';
+		$data['title'] = 'Laporan Penjualan - Ourtly Food';
 		$data['record'] = $this->model_laporan->laporan1();
 		$this->template->load('admin/template', 'admin/laporan/view_lap_penjualan', $data);
 	}
 
 	function laporan_minggu()
 	{
-		$data['title'] = 'Laporan Penjualan - Zamanet Store';
+		$data['title'] = 'Laporan Penjualan - Ourtly Food';
 		$data['record'] = $this->model_laporan->laporan7();
 		$this->template->load('admin/template', 'admin/laporan/view_lap_penjualan', $data);
 	}
 
 	function laporan_bulan()
 	{
-		$data['title'] = 'Laporan Penjualan - Zamanet Store';
+		$data['title'] = 'Laporan Penjualan - Ourtly Food';
 		$data['record'] = $this->model_laporan->laporan30();
 		$this->template->load('admin/template', 'admin/laporan/view_lap_penjualan', $data);
 	}
 
 	function laporan_tahun()
 	{
-		$data['title'] = 'Laporan Penjualan - Zamanet Store';
+		$data['title'] = 'Laporan Penjualan - Ourtly Food';
 		$data['record'] = $this->model_laporan->laporan360();
 		$this->template->load('admin/template', 'admin/laporan/view_lap_penjualan', $data);
 	}
@@ -938,7 +938,7 @@ class Admin extends CI_Controller
 	{
 
 		$data['record'] = $this->model_berita->list_berita();
-		$data['title'] = 'Newsletter - Zamanet Store';
+		$data['title'] = 'Newsletter - Ourtly Food';
 		$this->template->load('admin/template', 'admin/subs/view_berita', $data);
 	}
 
@@ -963,7 +963,7 @@ class Admin extends CI_Controller
 			$config['mailtype'] = "html";
 			$config['newline'] = "\r\n";
 			$ci->email->initialize($config);
-			$ci->email->from('demo-ecommerce@zamanet.com', "Zamanet Store");
+			$ci->email->from('demo-ecommerce@zamanet.com', "Ourtly Food");
 			$ci->email->to($this->model_app->emailsend());
 			$ci->email->subject("$judul");
 			$ci->email->message("$isi");
@@ -972,7 +972,7 @@ class Admin extends CI_Controller
 			$this->model_berita->list_berita_tambah();
 			redirect('admin/newsletter');
 		} else {
-			$data['title'] = 'Kirim News Letter - Zamanet Store';
+			$data['title'] = 'Kirim News Letter - Ourtly Food';
 			$this->template->load('admin/template', 'admin/subs/view_berita_tambah', $data);
 		}
 	}
@@ -980,7 +980,7 @@ class Admin extends CI_Controller
 	function lihat_newsletter()
 	{
 
-		$data['title'] = 'Detail Berita - Zamanet Store';
+		$data['title'] = 'Detail Berita - Ourtly Food';
 
 		$id = $this->uri->segment(3);
 		$data['rows'] = $this->model_berita->list_berita_edit($id)->row_array();
@@ -995,7 +995,7 @@ class Admin extends CI_Controller
 
 	function subscriber()
 	{
-		$data['title'] = 'Subscriber - Zamanet Store';
+		$data['title'] = 'Subscriber - Ourtly Food';
 		$data['record'] = $this->db->get_where('tb_subs', "aktif='1'")->result_array();
 		$this->template->load('admin/template', 'admin/subs/view_subs', $data);
 	}

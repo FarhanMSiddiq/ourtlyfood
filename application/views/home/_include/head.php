@@ -42,4 +42,11 @@ $iden = $this->db->query("SELECT * FROM tb_web_identitas where id_identitas='1'"
     <!-- Style CSS -->
     <link rel="stylesheet" href="<?= base_url('assets/template_mobile/') ?>css/style.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="<?= base_url('assets/template/tema/') ?>vendor/jquery/jquery.min.js"></script>
+    <script src="<?= base_url('assets/template_mobile/') ?>js/vendor/jquery-3.6.0.min.js"></script>
+    
+    <link rel="stylesheet" href="<?= base_url('assets/template/css/'); ?>sweetalert2/sweetalert2.min.css">
+    
 </head>
