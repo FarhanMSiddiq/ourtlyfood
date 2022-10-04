@@ -49,4 +49,8 @@ $iden = $this->db->query("SELECT * FROM tb_web_identitas where id_identitas='1'"
     
     <link rel="stylesheet" href="<?= base_url('assets/template/css/'); ?>sweetalert2/sweetalert2.min.css">
     
+    <script>
+        var site_url = '<?= base_url() ?>';
+    </script>
+    
 </head>

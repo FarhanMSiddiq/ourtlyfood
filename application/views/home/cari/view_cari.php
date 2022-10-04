@@ -1,91 +1,99 @@
-<?php if ($this->input->post('cari') != '') { ?>
 
-    <div class="row">
-        <div class="col-12">
-            <div class="block">
 
-                <?php if ($record->num_rows() == 0) { ?>
+<!-- ...:::Start User Event Section:::... -->
+<div class="header-section" >
+    <div class="container">
+        <!-- Start User Event Area -->
+        <div class="header-area">
+            <div class="header-top-area header-top-area--style-1">
+                <ul class="event-list">
+                    <li class="list-item"><a href="<?=base_url();?>" area-label="Cart" class="btn btn--size-33-33 btn--center btn--round btn--color-radical-red btn--bg-white btn--box-shadow"><i class="fa fa-arrow-left "></i></a></li>
+                    <li class="list-item"> <h2 class="title text-center">Produk</h2></li>
+                    <li class="list-item">
+                        <ul class="list-child">
+                            <li class="list-item">
+                                <a href="<?=base_url('keranjang');?>" area-label="Cart" class="btn btn--size-33-33 btn--center btn--round btn--color-radical-red btn--bg-white btn--box-shadow"><i
+                                class="icon icon-carce-cart"></i></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- End User Event Area -->
+    </div>
+</div>
+<!-- ...:::End User Event Section:::... -->
 
-                    <h5>Maaf produk yang anda cari tidak tersedia.</h5>
+<!-- ...:::Start Cart Section:::... -->
+<div class="cart-section section-gap-top-30">
+    <div class="container">
+        <div class="cart-items-wrapper">
+            <ul class="cart-item-list">
+                <?php
+                        $no = 1;
+                        foreach ($record->result_array() as $row) {
+                            if (trim($row['gambar']) == '') {
+                                $foto_produk = 'no-image.png';
+                            } else {
+                                $foto_produk = $row['gambar'];
+                            }
 
-                <?php } else { ?>
-
-                    <div class="products-view">
-                        <div class="products-view__list products-list" data-layout="grid-4-full" data-with-features="false">
-                            <div class="products-list__body">
-                                <?php
-                                $no = 1;
-                                foreach ($record->result_array() as $row) {
-                                    if (trim($row['gambar']) == '') {
-                                        $foto_produk = 'no-image.png';
-                                    } else {
-                                        $foto_produk = $row['gambar'];
-                                    }
-                                    $stok = $row['stok'];
-                                    if ($stok !== 0) {
-                                ?>
-                                        <div class="products-list__item shadow-lg">
-                                            <div class="product-card">
-                                                <input clas='post' id="id_produk" name="id_produk" type="hidden" value="<?= $row['id_produk'] ?>">
-                                                <div class="product-card__image"><a href="<?= base_url('produk/detail/') . $row['produk_seo']; ?>">
-                                                        <img src="<?= base_url('assets/images/produk/') . $foto_produk; ?>" alt=""></a></div>
-                                                <div class="product-card__info mb-3">
-                                                    <div class="product-card__name"><a href="<?= base_url('produk/detail/') . $row['produk_seo']; ?>"><?= $row['nama_produk']; ?></a></div>
-                                                    <div class="product-card__prices">
-                                                        <?php if ($row['diskon'] == '0') { ?>
-                                                            Rp <?= rupiah($row['harga_konsumen']) ?>
-                                                        <?php } else { ?>
-                                                            <small><del>Rp <?= rupiah($row['harga_konsumen']) ?></del></small>
-                                                            Rp <?= rupiah($row['harga_konsumen'] - $row['diskon']) ?>
-                                                        <?php } ?>
-                                                    </div>
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                <?php
-                                    }
-                                }
-                                ?>
-
+                            $stok = $row['stok'];
+                            if ($stok !== 0) { ?>
+                <!-- Start Single Cart Item -->
+                <li class="single-cart-item">
+                    <div class="image">
+                        <img width="90" height="90" src="<?= base_url('assets/images/produk/') . $foto_produk; ?>" alt="">
+                    </div>
+                    <div class="content">
+                        <a href="<?= base_url('produk/detail/') . $row['produk_seo']; ?>" class="title"><h3><?= $row['nama_produk']; ?></h3></a>
+                        <div class="details">
+                            <div class="left">
+                                <span class="brand">Nama Mitra</span>
+                                <span class="price"><?= "Rp " . number_format($row['harga_konsumen'],0,',','.'); ?></span>
                             </div>
                         </div>
-                    </div>
+                        <ul class="review-star">
+                                                            <?php
+                                                            $idpro = $row['id_produk'];
+                                                            $query = $this->db->query("SELECT * FROM tb_ulasan WHERE id_produk='$idpro'");
+                                                            $bin  = $this->db->query("SELECT SUM(bintang) AS totalbintang FROM tb_ulasan WHERE id_produk='$idpro'")->row_array();
+                                                            $jml_rev = $query->num_rows();
 
-                <?php } ?>
+                                                            $jml_bintang = $bin['totalbintang'] / $jml_rev;
+
+                                                            if ($jml_rev == 0) {
+                                                                for ($y = 0; $y < 5; $y++) { ?>
+                                                                     <li class="items fill"><i class="icon icon-carce-star-full" style="color:gray;"></i></li>
+                                                                <?php }
+                                                            } else {
+                                                                for ($y = 0; $y <  $jml_bintang; $y++) { ?>
+                                                                    <li class="items fill"><i class="icon icon-carce-star-full"></i></li>
+                                                                <?php }
+                                                                for ($y = 0; $y <  5 - $jml_bintang; $y++) { ?>
+                                                                     <li class="items fill"><i class="icon icon-carce-star-full" style="color:gray;"></i></li>
+                                                            <?php }
+                                                            } ?>
+                                                            <?php if ($jml_rev > 0) { ?>
+                                                                <li class="items fill">(<?= $jml_rev ?> Ulasan)</li>
+                                                            <?php } ?>
+                                       
+                        </ul>
+                    </div>
+                </li>
+                <!-- End Single Cart Item -->
+                <?php
+                            }
+                        }
+                        ?>
+            </ul>
+            <div align="center" style="margin-top:20px;">
+            <?php echo $this->pagination->create_links(); ?>
             </div>
         </div>
     </div>
-    <?= $this->pagination->create_links(); ?>
+</div>
+<!-- ...:::End Cart Section:::... -->
 
-<?php } else { ?>
-
-    <div class="row">
-        <div class="col-md-6 mx-auto">
-
-
-            <div class="px-5 py-5 shadow-lg" style="margin-top:25%;">
-                <div class=" site-header__search">
-                    <div class="search search--location--header">
-                        <div class="search__body">
-                            <form class="search__form" action="" method="POST">
-                                <input class="search__input" name="cari" placeholder="Saya ingin mencari.." aria-label="Site search" type="text" autocomplete="off">
-                                <button class="search__button search__button--type--submit" type="submit" name="submit">
-                                    <svg width="20px" height="20px">
-                                        <use xlink:href="<?= base_url('assets/template/tema/') ?>images/sprite.svg#search-20"></use>
-                                    </svg>
-                                </button>
-                                <div class="search__border"></div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    </div>
-
-<?php } ?>
+</div>

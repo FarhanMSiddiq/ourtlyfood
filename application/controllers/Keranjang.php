@@ -85,7 +85,35 @@ class Keranjang extends CI_Controller
         $data = array(
             'jumlah'    => $jumlah
         );
-        $this->db->update('tb_toko_penjualantemp', $data, "id_penjualan_detail='$id_pen'");
+        $update = $this->db->update('tb_toko_penjualantemp', $data, "id_penjualan_detail='$id_pen'");
+
+        redirect('keranjang');
+    }
+
+    function updateTambah()
+    {
+
+        $id_pen = decrypt_url($this->uri->segment(3));
+        $jumlah = $this->db->where('id_penjualan_detail',$id_pen)->get('tb_toko_penjualantemp')->row()->jumlah + 1;        
+
+        $data = array(
+            'jumlah'    => $jumlah
+        );
+        $update = $this->db->update('tb_toko_penjualantemp', $data, "id_penjualan_detail='$id_pen'");
+
+        redirect('keranjang');
+    }
+
+    function updateKurang()
+    {
+
+        $id_pen = decrypt_url($this->uri->segment(3));
+        $jumlah = $this->db->where('id_penjualan_detail',$id_pen)->get('tb_toko_penjualantemp')->row()->jumlah - 1;        
+
+        $data = array(
+            'jumlah'    => $jumlah
+        );
+        $update = $this->db->update('tb_toko_penjualantemp', $data, "id_penjualan_detail='$id_pen'");
 
         redirect('keranjang');
     }
@@ -123,9 +151,9 @@ class Keranjang extends CI_Controller
                     'kode_transaksi' => $this->session->idp,
                     'id_pembeli' => $this->session->id_pengguna,
                     'diskon' => $this->input->post('diskonnilai'),
-                    'kurir' => $this->input->post('kurir'),
+                    // 'kurir' => $this->input->post('kurir'),
                     'service' => $this->input->post('service'),
-                    'ongkir' => $this->input->post('ongkir'),
+                    'ongkir' => '0',
                     'waktu_transaksi' => date('Y-m-d H:i:s'),
                     'proses' => '0',
                     'p_nama' => $this->input->post('nama_pem'),

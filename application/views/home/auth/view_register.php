@@ -90,7 +90,7 @@
                                 </select>
                             </li>
                         </ul>
-                    <button type="submit" style="margin-top:40px;background-color: #337784;border: none;color: white;border-radius:20px;width:100%;padding: 15px 32px;"z>Daftar</button>
+                    <button type="submit" style="margin-top:40px;background-color: #337784;border: none;color: white;border-radius:20px;width:100%;padding: 15px 32px;">Daftar</button>
 
                     </form>
                 </div>

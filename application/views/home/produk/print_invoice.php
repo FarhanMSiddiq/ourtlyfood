@@ -93,7 +93,7 @@
   </tr>
   </table>
 
-  <table style="width: 100%; margin-top:20px">
+  <table style="width: 100%; margin-top:20px" border="1">
     <thead>
       <tr style="background-color:#ddd">
         <th width='40%' style="text-align: left">Nama Produk</th>
@@ -161,6 +161,16 @@
       </tr>
 
       <tr>
+        <td colspan='4'><b>Biaya Aplikasi</b></td>
+        <td class="border border-dark"><b>Rp
+            <span class="float-right">
+              <?= rupiah(3000); ?>
+            </span>
+          </b>
+        <td>
+      </tr>
+
+      <tr>
         <td colspan='4'><b>Biaya Kirim </b></td>
         <td><b>Rp
             <span class="float-right">
@@ -175,7 +185,7 @@
         <td colspan='4'><b>Total Bayar</b></td>
         <td class="border border-dark"><b>Rp
             <span class="float-right">
-              <?= rupiah($total['total'] + $total['ongkir']); ?>
+              <?= rupiah($total['total'] + $total['ongkir'] + 3000); ?>
             </span>
           </b>
         <td>
@@ -193,36 +203,6 @@
 
     </tbody>
   </table><br>
-
-  <p> Silahkan Transfer ke salah satu pilihan bank di bawah ini:</p>
-  <table style="width: 70%; margin-bottom:50px">
-    <thead>
-      <tr>
-        <th style="text-align: left">No</th>
-        <th style="text-align: left">Nama Bank</th>
-        <th style="text-align: left">No Rekening</th>
-        <th style="text-align: left">Atas Nama</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php
-      $no = 1;
-      $rekening = $this->model_app->view('tb_toko_rekening');
-      foreach ($rekening->result_array() as $row) {
-      ?>
-        <tr>
-          <td><?= $no ?></td>
-          <td><?= $row['nama_bank']; ?></td>
-          <td><?= $row['no_rekening']; ?></td>
-          <td><?= $row['pemilik_rekening']; ?></td>
-        </tr>
-      <?php
-        $no++;
-      }
-      ?>
-    </tbody>
-  </table>
-
 
   </div>
 

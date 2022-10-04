@@ -33,15 +33,16 @@
                     <div class="search-box">
 
                         <div class="searchable select">
-                            <input type="text" placeholder="Search..." onkeyup="filterFunction(this,event)">
-                            <ul>
+                            <form class="search__form" action="<?= base_url('cari') ?>" method="POST">
+                            <input type="text" name="cari" placeholder="Search..." onkeyup="filterFunction(this,event)">
+                            <!-- <ul>
                                 <li>mexico city</li>
                                 <li>Bulgaria</li>
                                 <li>san francisco</li>
                                 <li>Egypt</li>
                                 <li>texas</li>
-                            </ul>
-                            <button class="btn search__btn" aria-label="Search Icon" type="submit">
+                            </ul> -->
+                            <button class="btn search__btn" aria-label="Search Icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12.003" viewBox="0 0 12 12.003">
                                     <path id="Icon_ionic-ios-search" data-name="Icon ionic-ios-search" d="M13.859,13.131,10.522,9.762a4.756,4.756,0,1,0-.722.731l3.316,3.347a.514.514,0,0,0,.725.019A.517.517,0,0,0,13.859,13.131Zm-7.075-2.6a3.756,3.756,0,1,1,2.656-1.1A3.732,3.732,0,0,1,6.784,10.534Z" transform="translate(-2 -1.997)" fill="#171717" />
                                 </svg>
@@ -58,7 +59,7 @@
                                     <path id="Icon_metro-cancel" data-name="Icon metro-cancel" d="M6.857.643a6,6,0,1,0,6,6,6,6,0,0,0-6-6Zm0,10.875a4.875,4.875,0,1,1,4.875-4.875A4.875,4.875,0,0,1,6.857,11.518ZM8.732,3.643,6.857,5.518,4.982,3.643,3.857,4.768,5.732,6.643,3.857,8.518,4.982,9.643,6.857,7.768,8.732,9.643,9.857,8.518,7.982,6.643,9.857,4.768Z" transform="translate(-0.857 -0.643)" fill="#aaa" />
                                 </svg>
                             </button>
-
+                            </form>
                         </div>
 
                         <button id="filter-trigger" aria-label="Filter Icon" class="filter_btn btn--radius btn--radical-red btn--color-white btn--box-shadow btn--size-40-40 btn--center btn--font-size-22"><i

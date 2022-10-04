@@ -1,68 +1,95 @@
-<div class="block">
-  <div class="container">
-    <div class="row">
-      <div class="col-12 col-lg-3 d-flex">
-        <div class="account-nav flex-grow-1">
-          <ul>
-            <li class="account-nav__item"><a href="<?= base_url('members/dashboard') ?>">Dashboard</a></li>
-            <li class="account-nav__item"><a href="<?= base_url('members/edit_profile') ?>">Ubah Profil</a></li>
-            <li class="account-nav__item"><a href="<?= base_url('members/edit_alamat') ?>">Ubah Alamat</a></li>
-            <li class="account-nav__item account-nav__item--active"><a href="<?= base_url('members/riwayat_belanja') ?>">Riwayat Transaksi</a></li>
-            <li class="account-nav__item"><a href="<?= base_url('members/password') ?>">Ganti Password</a></li>
-            <li class="account-nav__item"><a href="javascript:void(0)" onclick="logout()">Keluar</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="col-12 col-lg-9 mt-4 mt-lg-0">
-        <div class="card">
-          <div class="card-header">
-            <h5>Riwayat Belanja</h5>
+<!-- ...:::Start User Event Section:::... -->
+<div class="header-section">
+      <div class="container">
+          <!-- Start User Event Area -->
+          <div class="header-area">
+              <div class="header-top-area header-top-area--style-1">
+                  <ul class="event-list">
+                  <li class="list-item"><a href="<?=base_url('members/dashboard')?>" area-label="Cart" class="btn btn--size-33-33 btn--center btn--round btn--color-radical-red btn--bg-white btn--box-shadow"><i class="fa fa-arrow-left "></i></a></li>
+                      <li class="list-item">
+                          <h2 class="title text-center">Riwayat Transaksi</h2>
+                      </li>
+                      <li class="list-item">
+                          
+                      </li>
+                  </ul>
+              </div>
           </div>
-          <div class="card-divider"></div>
-          <div class="card-body">
-            <table id='table1' class='table' style="width: 100%">
-              <thead>
-                <tr>
-                  <th style="width: 5%">No</th>
-                  <th>No Invoice</th>
-                  <th>Total Belanja</th>
-                  <th>Status</th>
-                  <th>Waktu Transaksi</th>
-                  <th style="width: 25%">&nbsp;</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php
-                $no = 1;
-                foreach ($record as $row) {
-                  if ($row['proses'] == '0') {
-                    $proses = '<i class="text-danger">Pending</i>';
-                  } elseif ($row['proses'] == '1') {
-                    $proses = '<i class="text-warning">Konfirmasi</i>';
-                  } elseif ($row['proses'] == '2') {
-                    $proses = '<i class="text-primary">Proses</i>';
-                  } elseif ($row['proses'] == '3') {
-                    $proses = '<i class="text-success">Dikirim </i>';
-                  }
-                  $total = $this->db->query("SELECT a.kode_transaksi, a.kurir, a.service, a.proses, a.ongkir, sum((b.harga_jual*b.jumlah)-(c.diskon*b.jumlah)) as total, sum(c.berat*b.jumlah) as total_berat FROM `tb_toko_penjualan` a JOIN tb_toko_penjualandetail b ON a.id_penjualan=b.id_penjualan JOIN tb_toko_produk c ON b.id_produk=c.id_produk where a.kode_transaksi='$row[kode_transaksi]'")->row_array();
-                  echo "<tr><td>$no</td>
-                              <td><a href='" . base_url() . "konfirmasi/tracking/$row[kode_transaksi]'>$row[kode_transaksi]</a></td>
-                              <td style='color:red;'>Rp " . rupiah($total['total'] + $total['ongkir']) . "</td>
-                              <td>$proses</td>
-                              <td>" . cek_terakhir($row['waktu_transaksi']) . " lalu</td>
-                              <td>
-                                <a class='btn btn-primary btn-xs' title='Download' href='" . base_url() . "page/download/$row[kode_transaksi]' target='_BLANK'>Download</a>
-                                <a class='btn btn-info btn-xs' title='Rincian data pesanan' href='" . base_url() . "page/tracking_status/$row[kode_transaksi]' target='_BLANK'>Rincian</a>
-                              </td>
-                          </tr>";
-                  $no++;
-                }
-                ?>
-              </tbody>
-            </table>
-          </div>
-        </div>
+          <!-- End User Event Area -->
       </div>
-    </div>
   </div>
-</div>
+  <!-- ...:::End User Event Section:::... -->
+
+
+  <!-- ...:::Start Cart Section:::... -->
+  <div class="cart-section section-gap-top-30" style="margin-bottom:100px;">
+            <div class="container">
+                <div class="cart-items-wrapper">
+                    <ul class="cart-item-list">
+                    <?php
+                    $no = 1;
+                    foreach ($record as $row) {
+                      $total = $this->db->query("SELECT a.kode_transaksi, a.kurir, a.service, a.proses, a.ongkir, sum((b.harga_jual*b.jumlah)-(c.diskon*b.jumlah)) as total, sum(c.berat*b.jumlah) as total_berat FROM `tb_toko_penjualan` a JOIN tb_toko_penjualandetail b ON a.id_penjualan=b.id_penjualan JOIN tb_toko_produk c ON b.id_produk=c.id_produk where a.kode_transaksi='$row[kode_transaksi]'")->row_array();
+                      ?>
+                        <!-- Start Single Cart Item -->
+                        <li class="single-cart-item">
+                            <div class="image">
+                                <img width="90" height="90" src="<?= base_url('assets/template_mobile/images/order.png')?>" alt="">
+                            </div>
+                            <div class="content">
+                                <a href="<?=base_url() . 'konfirmasi/tracking/'.$row['kode_transaksi']?>" class="title"><?=$row['kode_transaksi']?></a>
+                                <div class="details">
+                                    <div class="left">
+                                        <span class="brand">Rp<?=rupiah($total['total'] + $total['ongkir']+3000)?></span>
+                                        <span class="price"><?=cek_terakhir($row['waktu_transaksi'])?> lalu</span>
+                                    </div>
+                                    <div class="right">
+                                        <?php
+                                         if ($row['proses'] == '0') {
+                                         echo '<a style="padding:10px;background:#B73E3E;color:#FFFFFF;border-radius:20px;">Pending</a>';
+                                        } elseif ($row['proses'] == '1') {
+                                          echo '<a style="padding:10px;background:#083AA9;color:#FFFFFF;border-radius:20px;">Konfirmasi</a>';
+                                        } elseif ($row['proses'] == '2') {
+                                          echo '<a style="padding:10px;background:#47B5FF;color:#FFFFFF;border-radius:20px;">Proses</a>';
+                                        } elseif ($row['proses'] == '3') {
+                                          echo '<a style="padding:10px;background:#47B5FF;color:#FFFFFF;border-radius:20px;">Dikirim</a>';
+                                        }elseif ($row['proses'] == '4') {
+                                          echo '<a style="padding:10px;background:#256D85;color:#FFFFFF;border-radius:20px;">Selesai</a>';
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- End Single Cart Item -->
+                        <?php } ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- ...:::End Cart Section:::... -->
+
+
+
+        <!-- ...:::Start User Event Section:::... -->
+        <div class="user-event-section">
+            <!-- Start User Event Area -->
+            <div class="col pos-relative">
+
+                <div class="user-event-area">
+                    <div class="user-event user-event--left">
+                        <a area-label="event link icon" href="<?=base_url();?>" class="event-btn-link"><img src="<?=base_url();?>/assets/template_mobile/images/icons/ic_home.svg"></a>
+                        <a area-label="wishlist icon" href="<?=base_url('artikel');?>" class="event-btn-link"><img src="<?=base_url();?>/assets/template_mobile/images/icons/ic_news.svg"></a>
+                    </div>
+                    <div class="user-event user-event--center">
+                        <a area-label="cart icon" href="<?=base_url('produk')?>" class="event-btn-link"><img src="<?=base_url();?>/assets/template_mobile/images/icons/ic_cart.svg"></a>
+                    </div>
+                    <div class="user-event user-event--right">
+                        <a area-label="order icon" href="<?=base_url('keranjang');?>" class="event-btn-link"><img src="<?=base_url();?>/assets/template_mobile/images/icons/ic_pesanan.svg"></a>
+                        <a area-label="chat icon" href="<?=base_url('members/dashboard');?>" class="event-btn-link"><img src="<?=base_url();?>/assets/template_mobile/images/icons/ic_akun.svg"></a>
+                    </div>
+                </div>
+            </div>
+            <!-- End User Event Area -->
+        </div>
+        <!-- ...:::End User Event Section:::... -->

@@ -256,6 +256,10 @@ if ($('#price-range-slider').elExists()) {
     $(".short-section").slideToggle("slow");
   });
 
+  $("#btnModal").click(function () {
+    $(".short-section").slideToggle("slow");
+  });
+
 
   //Swap Function
 
